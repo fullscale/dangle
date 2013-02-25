@@ -1,6 +1,6 @@
 # dangle.js
 
-A set of [AngularJS](http://angularjs.org/) directives that provide common visualizations based on [D3](http://d3js.org/).
+A set of [AngularJS](http://angularjs.org/) directives that provide common visualizations for [elasticsearch](http://www.elasticsearch.org/) based on [D3](http://d3js.org/).
 
 ## Documentation
 You can find the official documentation at the following location:

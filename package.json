@@ -1,25 +1,25 @@
 {
-    "name": "dangle.js",
-    "description": "D3 dire",
+    "name": "dangle",
+    "description": "A set of AngularJS directives that provide common visualizations for elasticsearch based on D3",
     "version": "1.0.0",
-    "homepage": "https://www.fullscale.co/dangle",
-    "keywords": ["angularjs", "d3", "charts", "graphs"],
+    "homepage": "http://www.fullscale.co/dangle",
+    "keywords": ["angularjs", "d3", "charts", "graphs", "elasticsearch"],
     "repository": {
         "type": "git",
-        "url": "git://github.com/fullscale/dangle.js.git"
+        "url": "git://github.com/fullscale/dangle.git"
     },
     "bugs": {
-        "url": "https://www.fullscale.co/evo/issues"
+        "url": "https://github.com/fullscale/dangle/issues"
     },
     "licenses": [
         {
-            "type": "",
-            "url": ""
+            "type": "MIT",
+            "url": "https://github.com/fullscale/dangle/blob/master/LICENSE.txt"
         }
     ],
     "author": {
         "name": "FullScale Labs, LLC",
-        "url": "https://github.com/fullscale/dangle.js/blob/master/AUTHORS.txt"
+        "url": "https://github.com/fullscale/dangle/blob/master/AUTHORS"
     },
     "scripts": {
         "test": "grunt test"
