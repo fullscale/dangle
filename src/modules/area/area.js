@@ -28,7 +28,7 @@ angular.module('dangle')
         'use strict';
 
         return {
-			restrict: 'E',
+            restrict: 'E',
 
             // set up the isolate scope so that we don't clobber parent scope
             scope: {
@@ -44,9 +44,9 @@ angular.module('dangle')
                 pointRadius: '@' 
             },
 
-			link: function(scope, element, attrs) {
+            link: function(scope, element, attrs) {
 
-				var margin = {
+                var margin = {
                     top: 20, 
                     right: 20, 
                     bottom: 30, 
@@ -64,24 +64,24 @@ angular.module('dangle')
                 var klass = attrs.class || '';
 
                 // add margins (make room for x,y labels)
-				width = width - margin.left - margin.right;
-				height = height - margin.top - margin.bottom;
+                width = width - margin.left - margin.right;
+                height = height - margin.top - margin.bottom;
 
                 // create x,y sclaes (x is inferred as time)
-				var x = d3.time.scale()
-					.range([0, width]);
+                var x = d3.time.scale()
+                    .range([0, width]);
 
-				var y = d3.scale.linear()
-					.range([height, 0]);
+                var y = d3.scale.linear()
+                    .range([height, 0]);
 
                 // create x,y axis 
-				var xAxis = d3.svg.axis()
-					.scale(x)
-					.orient('bottom');
+                var xAxis = d3.svg.axis()
+                    .scale(x)
+                    .orient('bottom');
 
-				var yAxis = d3.svg.axis()
-					.scale(y)
-					.orient('left');
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient('left');
 
                 // create line generator 
                 var line = d3.svg.line()
@@ -89,10 +89,10 @@ angular.module('dangle')
                     .y(function(d) { return y(d.count); });
 
                 // create area generator
-				var area = d3.svg.area()
-					.x(function(d) { return x(d.time); })
-					.y0(height)
-					.y1(function(d) { return y(d.count); });
+                var area = d3.svg.area()
+                    .x(function(d) { return x(d.time); })
+                    .y0(height)
+                    .y1(function(d) { return y(d.count); });
 
                 // enable interpolation if specified 
                 if (attrs.interpolate == 'true') {
@@ -101,12 +101,12 @@ angular.module('dangle')
                 }
 
                 // create the root SVG node
-				var svg = d3.select(element[0])
-					.append('svg')
+                var svg = d3.select(element[0])
+                    .append('svg')
                         .attr('preserveAspectRatio', 'xMinYMin')
                         .attr('viewBox', '0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
-						.append('g')
-							.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+                        .append('g')
+                            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
                 // generate the area. Data is empty at link time
                 svg.append('path')
@@ -115,27 +115,27 @@ angular.module('dangle')
                     .attr('d', area);
 
                 // insert the x axis (no data yet)
-				svg.append('g')
-					.attr('class', 'area x axis ' + klass)
-					.attr('transform', 'translate(0,' + height + ')')
-					.call(xAxis);
+                svg.append('g')
+                    .attr('class', 'area x axis ' + klass)
+                    .attr('transform', 'translate(0,' + height + ')')
+                    .call(xAxis);
 
                 // insert the x axis (no data yet)
-				svg.append('g')
-					.attr('class', 'area y axis ' + klass)
-					.call(yAxis)
-					    .append('text')
-						    .attr('transform', 'rotate(-90)')
-						    .attr('y', 6)
-						    .attr('dy', '.71em')
-						    .style('text-anchor', 'end')
-						    .text(label);
+                svg.append('g')
+                    .attr('class', 'area y axis ' + klass)
+                    .call(yAxis)
+                        .append('text')
+                            .attr('transform', 'rotate(-90)')
+                            .attr('y', 6)
+                            .attr('dy', '.71em')
+                            .style('text-anchor', 'end')
+                            .text(label);
 
                 // generate the line. Data is empty at link time
-	            svg.append('path')
-		            .datum([])
+                svg.append('path')
+                    .datum([])
                     .attr('class', 'area line ' + klass)
-	                .attr("d", line);
+                    .attr("d", line);
 
 
                 // main observer fn called when scope is updated. Data and scope vars are now bound
@@ -156,7 +156,7 @@ angular.module('dangle')
 
                         // use that data to build valid x,y ranges
                         x.domain(d3.extent(data, function(d) { return d.time; }));
-				        y.domain([0, d3.max(data, function(d) { return d.count; })]);
+                        y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
                         // create the transition 
                         var t = svg.transition().duration(duration);
@@ -171,27 +171,27 @@ angular.module('dangle')
                             // create svg circle for each data point
                             // using Math.random as (optional) key fn ensures old
                             // data values are flushed and all new values inserted
-      	                    var points = svg.selectAll('circle')
-	                            .data(data.filter(function(d) { 
+                            var points = svg.selectAll('circle')
+                                .data(data.filter(function(d) { 
                                     return d.count; 
                                 }), function(d) { 
                                     return Math.random(); 
                                 });
 
                             // d3 enter fn binds each new value to a circle 
-	                        points.enter()
+                            points.enter()
                                 .append('circle')
                                     .attr('class', 'area line points ' + klass)
                                     .attr('cursor', 'pointer')
                                     .attr("cx", line.x())
-	                                .attr("cy", line.y())
+                                    .attr("cy", line.y())
                                     .style("opacity", 0)
                                     .transition()
                                         .duration(duration)
                                         .style("opacity", 1)
-	                                    .attr("cx", line.x())
-	                                    .attr("cy", line.y())
-	                                    .attr("r", pointRadius);
+                                        .attr("cx", line.x())
+                                        .attr("cy", line.y())
+                                        .attr("r", pointRadius);
 
                             // wire up any events (registers filter callback)
                             points.on('mousedown', function(d) { 
@@ -208,7 +208,7 @@ angular.module('dangle')
                         t.select('.x').call(xAxis);
                         t.select('.y').call(yAxis);
 
-			        }
+                    }
                 })
             }
         };
