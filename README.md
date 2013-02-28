@@ -36,6 +36,12 @@ You will also be able to find unofficial documentation and examples on on our
 [blog](http://www.fullscale.co/blog/) and GitHub Gist pages [here](https://gist.github.com/mattweber)
 and [here](https://gist.github.com/egaumer).
 
+**3rd Party Documentation**
+
+- [AngularJS](http://angularjs.org/) - HTML enhanced for web apps.
+- [elasticsearch](http://www.elasticsearch.org/) - the most advanced search engine to date.
+- [D3](http://d3js.org/) - a JavaScript library for manipulating documents based on data.
+
 ## License
 Copyright (c) 2012 FullScale Labs, LLC  
 Licensed under the MIT license.
