@@ -28,7 +28,7 @@ angular.module('dangle')
         'use strict';
 
         return {
-			restrict: 'E', 
+            restrict: 'E', 
 
             // sets up the isolate scope so that we don't clobber parent scope
             scope: {
@@ -43,7 +43,7 @@ angular.module('dangle')
             },
 
             // angular directives return a link fn
-			link: function(scope, element, attrs) {
+            link: function(scope, element, attrs) {
 
                 var margin = {
                     top:20, 
@@ -112,6 +112,7 @@ angular.module('dangle')
                     var duration = scope.duration || 0;
                     var delay = scope.delay || 0;
                     var field = scope.field || attrs.data.split('.').pop().toLowerCase();
+                    var interval = scope.interval || 'day';
 
                     // just because scope is bound doesn't imply we have data
                     if (data) {
@@ -123,18 +124,42 @@ angular.module('dangle')
                         // a 2 pixel "gap" between bars.
                         var barWidth = width/data.length - 2;
 
+                        var intervalMsecs = 86400000;
+
+                        // workaround until this pull request is merged
+                        // the user can pass in an appropriate interval
+                        // https://github.com/elasticsearch/elasticsearch/pull/2559
+                        switch(interval.toLowerCase()) {
+                            case 'minute':
+                                intervalMsecs = 60000;
+                                break;
+                            case 'hour':
+                                intervalMsecs = 3600000;
+                                break;
+                            case 'day':
+                                intervalMsecs = 86400000;
+                                break;
+                            case 'week':
+                                intervalMsecs = 604800000;
+                                break;
+                            case 'month':
+                                intervalMsecs = 2630000000;
+                                break;
+                            case 'year':
+                                intervalMsecs = 31560000000;
+                                break;
+                        }
+
                         // recalculate the x and y domains based on the new data.
                         // we have to add our "interval" to the max otherwise 
-                        // we don't have enough room to draw the last bar. Here it's
-                        // hardcoded to 1day (86400000 ms) but we need to somehow
-                        // "know" the interval the user used for the facet.
+                        // we don't have enough room to draw the last bar.
                         x.domain([
                             d3.min(data, function(d) { 
                                 return d.time;
                             }), 
                             d3.max(data, function(d) { 
                                 return d.time;
-                            }) + 86400000
+                            }) + intervalMsecs
                         ]);
                         y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
