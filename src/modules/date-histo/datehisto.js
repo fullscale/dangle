@@ -39,7 +39,8 @@ angular.module('dangle')
                 label:     '@',
                 field:     '@',
                 duration:  '@',
-                delay:     '@'
+                delay:     '@',
+                interval:  '@'
             },
 
             // angular directives return a link fn

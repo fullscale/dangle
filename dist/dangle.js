@@ -554,7 +554,7 @@ angular.module('dangle')
         'use strict';
 
         return {
-			restrict: 'E', 
+            restrict: 'E', 
 
             // sets up the isolate scope so that we don't clobber parent scope
             scope: {
@@ -565,11 +565,12 @@ angular.module('dangle')
                 label:     '@',
                 field:     '@',
                 duration:  '@',
-                delay:     '@'
+                delay:     '@',
+                interval:  '@'
             },
 
             // angular directives return a link fn
-			link: function(scope, element, attrs) {
+            link: function(scope, element, attrs) {
 
                 var margin = {
                     top:20, 
