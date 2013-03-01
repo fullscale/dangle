@@ -771,7 +771,8 @@ angular.module('dangle')
                 domain: '=',
                 colorMap: '=',
                 onClick: '=',
-                bind: '='
+                bind: '=',
+                duration: '@'
             },
 
             link: function(scope, element, attrs) {
@@ -835,6 +836,8 @@ angular.module('dangle')
                 // Wrap the main drawing logic in an Angular watch function.
                 // This will get called whenever our data attribute changes.
                 scope.$watch('bind', function(data) {
+
+                    var duration = scope.duration || 0;
 
                     // arc tweening
                     function arcTween(d, i) {
@@ -903,7 +906,7 @@ angular.module('dangle')
                                     });
 
                             // run the transition
-                            path.transition().duration(750).attrTween('d', arcTween);
+                            path.transition().duration(duration).attrTween('d', arcTween);
 
                             // update the label ticks
                             var ticks = labels.selectAll('line').data(pieData);
@@ -968,7 +971,7 @@ angular.module('dangle')
                                 .each(function(d) {this._current = d;});
                            
                             // run the transition
-                            percentLabels.transition().duration(750).attrTween("transform", textTween);
+                            percentLabels.transition().duration(duration).attrTween("transform", textTween);
 
                             // flush old entries
                             percentLabels.exit().remove();
@@ -1028,7 +1031,7 @@ angular.module('dangle')
                                 .each(function(d) {this._current = d;});
 
                             // run the transition
-                            nameLabels.transition().duration(750).attrTween("transform", textTween);
+                            nameLabels.transition().duration(duration).attrTween("transform", textTween);
     
                             // flush old entries
                             nameLabels.exit().remove();
