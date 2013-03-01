@@ -146,7 +146,7 @@ angular.module('dangle')
                     var delay = scope.delay || 0;
                     var dataPoints = scope.plot || 'true';
                     var pointRadius = scope.pointRadius || 8;
-                    var field = scope.field || attrs.data.split('.').pop().toLowerCase();
+                    var field = scope.field || attrs.bind.split('.').pop().toLowerCase();
 
                     // just because scope is bound doesn't imply we have data.
                     if (data) {

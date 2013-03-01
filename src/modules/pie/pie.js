@@ -53,7 +53,7 @@ angular.module('dangle')
 
                 // if no field param is set, use the facet name but normalize the case
                 if (attrs.field == undefined) {
-                    attrs.field = attrs.data.split('.').pop().toLowerCase();
+                    attrs.field = attrs.bind.split('.').pop().toLowerCase();
                 }
 
                 // User can define a color-map so use look for one.

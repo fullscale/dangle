@@ -1,4 +1,4 @@
-/*! dangle - v1.0.0 - 2013-02-28
+/*! dangle - v1.0.0 - 2013-03-01
 * http://www.fullscale.co/dangle
 * Copyright (c) 2013 FullScale Labs, LLC; Licensed MIT */
 
@@ -54,7 +54,7 @@ angular.module('dangle')
 
                 // if no field param is set, use the facet name but normalize the case
                 if (attrs.field == undefined) {
-                    attrs.field = attrs.data.split('.').pop().toLowerCase();
+                    attrs.field = attrs.bind.split('.').pop().toLowerCase();
                 }
 
                 width = width - margin.left - margin.right;

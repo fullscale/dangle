@@ -1,4 +1,4 @@
-/*! dangle - v1.0.0 - 2013-02-28
+/*! dangle - v1.0.0 - 2013-03-01
 * http://www.fullscale.co/dangle
 * Copyright (c) 2013 FullScale Labs, LLC; Licensed MIT */
 
@@ -150,7 +150,7 @@ angular.module('dangle')
                     var delay = scope.delay || 0;
                     var dataPoints = scope.plot || 'true';
                     var pointRadius = scope.pointRadius || 8;
-                    var field = scope.field || attrs.data.split('.').pop().toLowerCase();
+                    var field = scope.field || attrs.bind.split('.').pop().toLowerCase();
 
                     // just because scope is bound doesn't imply we have data.
                     if (data) {

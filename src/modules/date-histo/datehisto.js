@@ -112,7 +112,7 @@ angular.module('dangle')
                     // pull info from scope
                     var duration = scope.duration || 0;
                     var delay = scope.delay || 0;
-                    var field = scope.field || attrs.data.split('.').pop().toLowerCase();
+                    var field = scope.field || attrs.bind.split('.').pop().toLowerCase();
                     var interval = scope.interval || 'day';
 
                     // just because scope is bound doesn't imply we have data
