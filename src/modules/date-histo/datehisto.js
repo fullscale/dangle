@@ -165,7 +165,7 @@ angular.module('dangle')
                         y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
                         // create transition (x,y axis)
-                        var t = svg.transition().duration(750);
+                        var t = svg.transition().duration(duration);
 
                         // using a random key function here will cause all nodes to update
                         var bars = svg.selectAll('rect')
