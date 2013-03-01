@@ -36,6 +36,8 @@ You will also be able to find unofficial documentation and examples on on our
 [blog](http://www.fullscale.co/blog/) and GitHub Gist pages [here](https://gist.github.com/mattweber)
 and [here](https://gist.github.com/egaumer).
 
+You can see a simple demo [here](http://www.fullscale.co/dangle/demo/).
+
 **3rd Party Documentation**
 
 - [AngularJS](http://angularjs.org/) - HTML enhanced for web apps.
