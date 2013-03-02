@@ -199,7 +199,7 @@ angular.module('dangle')
                         t.select('.x').call(xAxis);
                         t.select('.y').call(yAxis);
                     }
-                })
+                }, true)
             }
         };
     }]);

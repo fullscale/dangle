@@ -209,7 +209,7 @@ angular.module('dangle')
                         t.select('.y').call(yAxis);
 
                     }
-                })
+                }, true)
             }
         };
     }]);
