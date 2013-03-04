@@ -173,7 +173,15 @@ angular.module('dangle')
                                     });
 
                             // run the transition
-                            path.transition().duration(duration).attrTween('d', arcTween);
+                            path
+                                .style('fill', function(d) { return color(d.data.term); })
+                            .transition()
+                                .duration(duration)
+                                .attrTween('d', arcTween)
+                                .style('fill', function(d) { return color(d.data.term); });
+
+                            // remove arcs not in the dataset
+                            path.exit().remove();
 
                             // update the label ticks
                             var ticks = labels.selectAll('line').data(pieData);
